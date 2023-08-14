@@ -1,0 +1,22 @@
+{
+  "name": "generate_coupons_for_sunshine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1436.0",
+    "bwip-js": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "got": "^13.0.0",
+    "moment-timezone": "^0.5.43",
+    "papaparse": "^5.4.1",
+    "yup": "^1.2.0"
+  }
+}
