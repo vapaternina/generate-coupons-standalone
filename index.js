@@ -11,7 +11,7 @@ const S3 = new AWS.S3();
 
 const COUPON_TEMPLATE = 'portalweb-cupon-general'
 
-const generateCouponAndPdf = async (contractId, couponValue, userPhoneNumber) => {
+const generateCouponAndPdf = async (contractId, couponValue, userPhoneNumber, index) => {
   const coupon = await generateOsfCoupon(contractId, couponValue);
   const couponId = coupon.CUPONUME;
   const expiryDate = moment().add(10, 'years').tz('America/Bogota');
@@ -33,7 +33,9 @@ const generateCouponAndPdf = async (contractId, couponValue, userPhoneNumber) =>
     templateParams
   );
 
-  const pdfPath = `gestion-cartera/dividir-factura/${userPhoneNumber}/${id}.pdf`;
+  const fileName = `${contractId}_${couponId}_pago${index}`;
+
+  const pdfPath = `gestion-cartera/dividir-factura/${userPhoneNumber}/${fileName}.pdf`;
 
   const paramsPdf = {
     Body: Buffer.from(base64, 'base64'),
@@ -77,17 +79,15 @@ const processFile = async ()=> {
 
       const couponValues = getCouponValues(value);
 
-      const coupons = [];
-      for (const couponValue of couponValues){
-        const couponData = await generateCouponAndPdf(contractId, couponValue, userPhoneNumber);
+      const coupons = await Promise.all(couponValues.map(async (couponValue, index) => {
+        const couponData = await generateCouponAndPdf(contractId, couponValue, userPhoneNumber, index + 1);
         console.log(couponData);
 
-        coupons.push(couponData);
-      }
+        return couponData; 
+      }));
   
       const outputData = { userPhoneNumber, contractId, coupons }
 
-      console.log(outputData);
       output.push(outputData)
     }
 
