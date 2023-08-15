@@ -23,4 +23,8 @@ const readCSVFile = async (filePath) => {
   });
 };
 
-export { formatMoney, readCSVFile }
+const writeJSONFile = async (data) => {
+  fs.writeFileSync('./output.json', data);
+}
+
+export { formatMoney, readCSVFile, writeJSONFile }

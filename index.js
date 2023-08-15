@@ -3,17 +3,20 @@ import express from 'express';
 import moment from 'moment-timezone';
 import 'moment/locale/es.js';
 import coupons from './coupons.controller.js';
+import processFile from './app.js';
 
 moment.locale('es');
-const app = express();
-const port = 3001;
 
-app.get('/', (req, res) => {
-  res.send('Running!');
-});
+processFile();
+// const app = express();
+// const port = 3001;
 
-app.use('/coupons', coupons);
+// app.get('/', (req, res) => {
+//   res.send('Running!');
+// });
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+// app.use('/coupons', coupons);
+
+// app.listen(port, () => {
+//   console.log(`App listening at http://localhost:${port}`);
+// });
