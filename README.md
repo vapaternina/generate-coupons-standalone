@@ -2,7 +2,7 @@
 # Funcionalidad
 - Basado en el contenido de `input.csv`, el programa generará 4 cupones por cada línea, diviviendo su valor en 4 partes para el mismo contrato.
 - Se generará un PDF para cada cupón
-- Cada PDF será cargado en el bucket de S3 en su respectiva ruta `/gestion-cartera/dividir-factura/${userPhoneNumber}/${id}.pdf`
+- Cada PDF será cargado en el bucket de S3 en su respectiva ruta `gestion-cartera/dividir-factura/${userPhoneNumber}/${fileName}.pdf`
 - El programa generará un archivo `output.json` con el resumen de todos los cupones generados por telefono y contrato.
 
 # Instalación
