@@ -1,5 +1,7 @@
 import 'dotenv/config';
-import moment from "moment-timezone";
+import moment from 'moment-timezone';
+import 'moment/locale/es.js';
+moment.locale('es');
 import getSunshineConversationData from "./lib/getSunshineConversationData.js";
 import { formatMoney, readCSVFile, writeJSONFile } from "./helpers/utils.js";
 import generateOsfCoupon from "./lib/integrator/generateCoupon.js";
@@ -31,7 +33,7 @@ const generateCouponAndPdf = async (contractId, couponValue, userPhoneNumber) =>
     templateParams
   );
 
-  const pdfPath = `/gestion-cartera/dividir-factura/${userPhoneNumber}/${id}.pdf`;
+  const pdfPath = `gestion-cartera/dividir-factura/${userPhoneNumber}/${id}.pdf`;
 
   const paramsPdf = {
     Body: Buffer.from(base64, 'base64'),
