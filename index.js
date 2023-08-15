@@ -40,7 +40,8 @@ const generateCouponAndPdf = async (contractId, couponValue, userPhoneNumber, in
   const paramsPdf = {
     Body: Buffer.from(base64, 'base64'),
     Bucket: process.env.STORAGE_S3_BUCKET,
-    Key: pdfPath
+    Key: pdfPath,
+    ContentType: 'application/pdf'
   };
 
   S3.putObject(paramsPdf).promise();
