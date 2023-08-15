@@ -16,14 +16,16 @@
 8. Ejecutar el programa con `node index.js`
 
 # Example
-## Input (contenido de `input.csv` en la raíz del proyecto)
-Cada línea tiene la forma `contractId`,`couponValue`,`userId`, donde `userId` es el id de conversacion de Sunshine / WhatsApp)
+## Input
+- Contenido de `input.csv` en la raíz del proyecto, deben agregarse valores antes de ejecutar el programa
+- Cada línea tiene la forma `contractId`,`couponValue`,`userId`, donde `userId` es el id de conversacion de Sunshine / WhatsApp)
 ```
 10,20000,5542c41e5adcc0d6376ab749
 10,23550,5542c41e5adcc0d6376ab749
 10,27300,5542c41e5adcc0d6376ab749
 ```
-## Output (contenido de `output.json` en la raíz del proyecto)
+## Output
+- Contenido de `output.json` en la raíz del proyecto luego de la ejecución del programa
 ```
 [
 	{
