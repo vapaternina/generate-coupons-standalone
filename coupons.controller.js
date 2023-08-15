@@ -24,7 +24,8 @@ router.post('/generate', async (req, res) => {
   
     for(let i = 0; i < 4; i++){
       const quarterValue = Math.floor(value / 4);
-      const couponValue = i === 3 ? quarterValue + value % 4 : quarterValue;
+      const remaining = value % 4;
+      const couponValue = i === 3 ? quarterValue + remaining : quarterValue;
       const coupon = await generateCoupon(contractId, couponValue);
       const couponId =  coupon.CUPONUME;
       const expiryDate = moment().add(10, 'years');
