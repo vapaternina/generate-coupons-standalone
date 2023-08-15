@@ -1,9 +1,9 @@
 import express from 'express';
 import getSunshineConversationData from './lib/getSunshineConversationData.js';
 import generateCoupon from './lib/integrator/generateCoupon.js';
-import generateCouponPDF from './lib/helpers/generateCouponPDF.js';
+import generateCouponPDF from './helpers/generateCouponPDF.js';
 import moment from 'moment-timezone';
-import { formatMoney } from './lib/helpers/utils.js';
+import { formatMoney } from './helpers/utils.js';
 const router = express.Router();
 import AWS from 'aws-sdk';
 const S3 = new AWS.S3();
@@ -24,11 +24,10 @@ router.post('/generate', async (req, res) => {
   
     for(let i = 0; i < 4; i++){
       const quarterValue = Math.floor(value / 4);
-      const coupon = await generateCoupon(contractId, quarterValue);
+      const couponValue = i === 3 ? quarterValue + value % 4 : quarterValue;
+      const coupon = await generateCoupon(contractId, couponValue);
       const couponId =  coupon.CUPONUME;
       const expiryDate = moment().add(10, 'years');
-  
-      const couponValue = i === 3 ? quarterValue + value % 4 : quarterValue;
   
       const templateParams = {
         REASON_TEXT: 'CUPÓN PARA PAGO',

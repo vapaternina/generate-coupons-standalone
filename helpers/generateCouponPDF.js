@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 import bwipjs from 'bwip-js';
-import generateBase64PDF from '../pdfgenerator/generatePDF.js';
+import generateBase64PDF from '../helpers/generateCouponPDF.js';
 
 const barcodeText = 7707232377896;
 const couponPadSize = 10;
