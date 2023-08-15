@@ -7,7 +7,7 @@ import processFile from './app.js';
 
 moment.locale('es');
 
-processFile();
+await processFile();
 // const app = express();
 // const port = 3001;
 
