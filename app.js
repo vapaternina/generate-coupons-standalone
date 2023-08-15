@@ -59,7 +59,7 @@ const getCouponValues = (value) => {
 
 const processFile = async ()=> {
   try{
-    const csvData = await readCSVFile('./test.csv');
+    const csvData = await readCSVFile('./input.csv');
 
     const output = [];
 
